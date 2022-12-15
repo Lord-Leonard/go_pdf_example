@@ -21,7 +21,8 @@ jobs:
           go-version: 1.17
       - uses: actions/checkout@v3
       - uses: actions/checkout@v3
-        repository: Lord-Leonard/maroto
+        with:
+          repository: Lord-Leonard/maroto
       - name: golangci-lint
         uses: golangci/golangci-lint-action@v3
         with:
