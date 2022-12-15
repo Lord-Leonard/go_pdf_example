@@ -16,6 +16,7 @@ func main() {
 	buildHeading(m)
 	buildInvoiceHeader(m)
 	buildInvoicePositions(m)
+	buildFooter(m)
 
 	err := m.OutputFileAndClose("pdfs/test.pdf")
 	if err != nil {
@@ -24,6 +25,35 @@ func main() {
 	}
 
 	fmt.Println("PDF saved successfully")
+}
+
+func buildFooter(m pdf.Maroto) {
+	m.RegisterFooter(func() {
+		m.Row(20, func() {
+			m.Col(33, func() {
+				m.Text("Blumenhaus Iris Martin", props.Text{
+					Style: consts.Bold,
+					Size:  9,
+				})
+				m.Text("Bundesstraße 3", props.Text{
+					Top:  5,
+					Size: 9,
+				})
+				m.Text("35764 Sinn", props.Text{
+					Top:  10,
+					Size: 9,
+				})
+				m.Text("Telefon: 06449-488", props.Text{
+					Top:  15,
+					Size: 9,
+				})
+				m.Text("Email: example@mail.com", props.Text{
+					Top:  20,
+					Size: 9,
+				})
+			})
+		})
+	})
 }
 
 func buildInvoiceHeader(m pdf.Maroto) {
@@ -186,26 +216,27 @@ func buildHeading(m pdf.Maroto) {
 
 func buildInvoicePositions(m pdf.Maroto) {
 	tableHeadings := []string{"Pos.", "Beschreibung", "Stk.", "Einzelpreis \n€", "Mwst \n%", "Gesamt \n€"}
-	contents := [][]string{{"1", "Strauß (20)", "1", "20,00 ", "9,00", "9,80"}, {"2", "Strauß (15)", "2", "15,00 ", "7,00", "132,10"}}
+	contents := [][]string{{"1", "Strauß (20)", "1", "20,00", "9,00", "9,80"}, {"2", "Strauß (15)", "2", "15,00", "7,00", "132,10"}}
 	lightPurpleColor := getLightPurpleColor()
 
 	m.SetBackgroundColor(color.NewWhite())
 
 	m.TableList(tableHeadings, contents, props.TableList{
 		HeaderProp: props.TableListContent{
-			Size:      9,
-			GridSizes: []uint{5, 65, 5, 11, 6, 8},
+			Size:      10,
+			GridSizes: []uint{5, 63, 5, 12, 6, 9},
 			Align:     []consts.Align{consts.Left, consts.Left, consts.Center, consts.Center, consts.Center, consts.Center},
 		},
 		ContentProp: props.TableListContent{
 			Size:      9,
 			GridSizes: []uint{5, 65, 5, 11, 6, 8},
-			Align:     []consts.Align{consts.Left, consts.Left, consts.Center, consts.Right, consts.Right, consts.Right},
+			Align:     []consts.Align{consts.Center, consts.Left, consts.Center, consts.Right, consts.Right, consts.Right},
 		},
-		HeaderContentSpace:     2,
-		VerticalContentPadding: 1,
-		Line:                   false,
-		AlternatedBackground:   &lightPurpleColor,
+		HeaderContentSpace:       2,
+		VerticalContentPadding:   1,
+		HorizontalContentPadding: 1,
+		Line:                     false,
+		AlternatedBackground:     &lightPurpleColor,
 	})
 }
 
