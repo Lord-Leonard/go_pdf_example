@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/go_pdf_example.iml" filepath="$PROJECT_DIR$/.idea/go_pdf_example.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../luna_pdf_generator/.idea/luna_pdf_generator.iml" filepath="$PROJECT_DIR$/../luna_pdf_generator/.idea/luna_pdf_generator.iml" />
       <module fileurl="file://$PROJECT_DIR$/../maroto/.idea/maroto.iml" filepath="$PROJECT_DIR$/../maroto/.idea/maroto.iml" />
     </modules>
   </component>

@@ -1,0 +1,61 @@
+POST http://localhost:8080/rechnung
+Content-Type: application/json
+
+{
+	"kunde": {
+		"andrede": "Frau",
+		"name": "Marine Kübel",
+		"adresse": {
+			"straße":       "Gartenstr.",
+			"hausnummer":   "16a",
+			"postleitzahl": "76138",
+			"stadt":        "Kerlsruhe"
+		}
+	},
+	"klient": {
+		"name": "Blumenhaus Iris Martin",
+		"telefon": "06449-488",
+		"fax": "06449-6022",
+		"email": "iris.mf.floristik@gmail.com",
+		"steuernummer": "009/619/60117",
+		"umsatzsteuernummer": "310072624",
+		"geschäftsführer": {
+			"name": "Iris Martin Fuhrländer"
+		},
+		"adresse": {
+			"straße":       "Bundesstraße.",
+			"hausnummer":   "3",
+			"postleitzahl": "35764",
+			"stadt":        "Sinn"
+		},
+		"zahlungsinformationen": {
+			"bank": "Sparkasse Dillenburg",
+			"iban": "DE67 5165 0045 0000 0642 53",
+			"bic": "HELADEF1DIL"
+		}
+	},
+	"wichtigkeit": "Mahnung",
+	"rechnungsnummer": "000001",
+	"rechnungsDatum": "05.06.2021",
+	"leistungsDatum": "05.05.2021",
+	"positionen": [{
+		"Positionsnummer": "1",
+		"Beschreibung": "Straus (15)",
+		"Menge": "1",
+		"Einzelpreis": "14,46",
+		"Mehrwertsteuersatz": "7",
+		"Gesammtpreis": "15,00"
+	},
+	{
+		"Positionsnummer": "2",
+		"Beschreibung": "Straus (15)",
+		"Menge": "1",
+		"Einzelpreis": "14,46",
+		"Mehrwertsteuersatz": "7",
+		"Gesammtpreis": "15,00"
+	}],
+	"netto":           "28,92",
+	"mehrwertsteuer":  "1,08",
+	"gesamtpreis":     "30,00"
+}
+###
